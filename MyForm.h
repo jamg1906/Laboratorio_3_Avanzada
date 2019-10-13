@@ -771,14 +771,14 @@ namespace Laboratorio3JavierMorales1210219 {
 	}
 private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	System::Windows::Forms::MessageBox::Show("Baraja" + baraja->ObtenerPila(baraja));
-	System::Windows::Forms::MessageBox::Show("Pila 1" + pila_1->ObtenerPila(pila_1));
-	System::Windows::Forms::MessageBox::Show("Pila 2" + pila_2->ObtenerPila(pila_2));
-	System::Windows::Forms::MessageBox::Show("Pila 3" + pila_3->ObtenerPila(pila_3));
-	System::Windows::Forms::MessageBox::Show("Pila 4" + pila_4->ObtenerPila(pila_4));
-	System::Windows::Forms::MessageBox::Show("Pila 5" + pila_5->ObtenerPila(pila_5));
-	System::Windows::Forms::MessageBox::Show("Pila 6" + pila_6->ObtenerPila(pila_6));
-	System::Windows::Forms::MessageBox::Show("Pila 7" + pila_7->ObtenerPila(pila_7));
+	System::Windows::Forms::MessageBox::Show("Baraja\n" + baraja->ObtenerPila(baraja));
+	System::Windows::Forms::MessageBox::Show("Pila 1\n" + pila_1->ObtenerPila(pila_1));
+	System::Windows::Forms::MessageBox::Show("Pila 2\n" + pila_2->ObtenerPila(pila_2));
+	System::Windows::Forms::MessageBox::Show("Pila 3\n" + pila_3->ObtenerPila(pila_3));
+	System::Windows::Forms::MessageBox::Show("Pila 4\n" + pila_4->ObtenerPila(pila_4));
+	System::Windows::Forms::MessageBox::Show("Pila 5\n" + pila_5->ObtenerPila(pila_5));
+	System::Windows::Forms::MessageBox::Show("Pila 6\n" + pila_6->ObtenerPila(pila_6));
+	System::Windows::Forms::MessageBox::Show("Pila 7\n" + pila_7->ObtenerPila(pila_7));
 }
 private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	int cant;
@@ -947,6 +947,315 @@ private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e
 	p5_nelementos->Text = "Cartas: " + pila_5->Elementos_en_la_pila;
 	p6_nelementos->Text = "Cartas: " + pila_6->Elementos_en_la_pila;
 	p7_nelementos->Text = "Cartas: " + pila_7->Elementos_en_la_pila;
+
+	//COMPROBACIÓN PILA 1 INICIO
+	int comprobaciones_p1 = 0;
+	if (pila_1->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_1->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_1->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p1++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p1++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p1++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_1->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p1 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 1 FINAL
+
+	//COMPROBACIÓN PILA 2 INICIO
+	int comprobaciones_p2 = 0;
+	if (pila_2->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_2->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_2->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p2++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p2++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p2++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_2->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p2 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 2 FINAL
+
+	//COMPROBACIÓN PILA 3 INICIO
+	int comprobaciones_p3 = 0;
+	if (pila_3->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_3->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_3->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p3++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p3++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p3++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_3->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p3 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 3 FINAL
+
+	//COMPROBACIÓN PILA 4 INICIO
+	int comprobaciones_p4 = 0;
+	if (pila_4->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_4->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_4->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p4++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p4++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p4++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_4->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p4 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 4 FINAL
+
+	//COMPROBACIÓN PILA 5 INICIO
+	int comprobaciones_p5 = 0;
+	if (pila_5->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_5->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_5->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p5++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p5++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p5++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_5->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p5 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 5 FINAL
+
+	//COMPROBACIÓN PILA 6 INICIO
+	int comprobaciones_p6 = 0;
+	if (pila_6->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_6->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_6->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p6++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p6++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p6++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_6->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p6 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 6 FINAL
+
+	//COMPROBACIÓN PILA 7 INICIO
+	int comprobaciones_p7 = 0;
+	if (pila_7->Elementos_en_la_pila >= 5)
+	{
+		Carta CimaOriginal = pila_7->Desapilar();
+		int color_o = CimaOriginal.color_carta;
+		int valor_o = CimaOriginal.numero_carta;
+		Pila* Pila_Temporal = new Pila();
+		for (int i = 0; i < 4; i++)
+		{
+			Pila_Temporal->Apilar(CimaOriginal);
+			CimaOriginal = pila_7->Desapilar();
+			if (color_o == 1 && CimaOriginal.color_carta == 2)
+			{
+				comprobaciones_p7++;
+			}
+			if (color_o == 2 && CimaOriginal.color_carta == 1)
+			{
+				comprobaciones_p7++;
+			}
+			if ((valor_o + 1) == CimaOriginal.numero_carta)
+			{
+				comprobaciones_p7++;
+			}
+			color_o = CimaOriginal.color_carta;
+			valor_o = CimaOriginal.numero_carta;
+		}
+		Pila_Temporal->Apilar(CimaOriginal);
+		for (int j = 0; j < 5; j++)
+		{
+			pila_7->Apilar(Pila_Temporal->Desapilar());
+		}
+
+	}
+	if (comprobaciones_p7 == 8)
+	{
+		System::Windows::Forms::MessageBox::Show("Ganó. Felicidades.");
+		start_btn->Enabled = false;
+		button3->Enabled = false;
+		button2->Enabled = false;
+	}
+	//COMPROBACIÓN PILA 7 FINAL
+
+	txt_pila1->Text = pila_1->ObtenerPila(pila_1);
+	txt_pila2->Text = pila_2->ObtenerPila(pila_2);
+	txt_pila3->Text = pila_3->ObtenerPila(pila_3);
+	txt_pila4->Text = pila_4->ObtenerPila(pila_4);
+	txt_pila5->Text = pila_5->ObtenerPila(pila_5);
+	txt_pila6->Text = pila_6->ObtenerPila(pila_6);
+	txt_pila7->Text = pila_7->ObtenerPila(pila_7);
 	
 
 }
@@ -959,73 +1268,70 @@ private: System::Void Button3_Click(System::Object^ sender, System::EventArgs^ e
 	try
 	{
 		destino = Convert::ToInt32(Destino_de_baraja->Text);
+		C = baraja->Desapilar();
+		C.mostrar = true;
+		switch (destino)
+		{
+		case 1:
+			pila_1->Apilar(C);
+			break;
+		case 2:
+			pila_2->Apilar(C);
+			break;
+		case 3:
+			pila_3->Apilar(C);
+			break;
+		case 4:
+			pila_4->Apilar(C);
+			break;
+		case 5:
+			pila_5->Apilar(C);
+			break;
+		case 6:
+			pila_6->Apilar(C);
+			break;
+		case 7:
+			pila_7->Apilar(C);
+			break;
+		}
+		txt_pila1->Text = pila_1->ObtenerPila(pila_1);
+		txt_pila2->Text = pila_2->ObtenerPila(pila_2);
+		txt_pila3->Text = pila_3->ObtenerPila(pila_3);
+		txt_pila4->Text = pila_4->ObtenerPila(pila_4);
+		txt_pila5->Text = pila_5->ObtenerPila(pila_5);
+		txt_pila6->Text = pila_6->ObtenerPila(pila_6);
+		txt_pila7->Text = pila_7->ObtenerPila(pila_7);
+		if (baraja->Elementos_en_la_pila == 0)
+		{
+			System::Windows::Forms::MessageBox::Show("Se han acabado las cartas en la baraja.");
+			button3->Enabled = false;
+			label2->Visible = false;
+			txt_cima_baraja->Visible = false;
+		}
+		txt_restantes_baraja->Text = "Quedan " + baraja->Elementos_en_la_pila + " cartas en la baraja.";
+		Carta Cima_Baraja = baraja->ObtenerCima();
+		String^ color;
+		if (Cima_Baraja.color_carta == 1)
+		{
+			color = "Rojo";
+		}
+		else
+		{
+			color = "Negro";
+		}
+		txt_cima_baraja->Text = Cima_Baraja.numero_carta + " " + color;
+		p1_nelementos->Text = "Cartas: " + pila_1->Elementos_en_la_pila;
+		p2_nelementos->Text = "Cartas: " + pila_2->Elementos_en_la_pila;
+		p3_nelementos->Text = "Cartas: " + pila_3->Elementos_en_la_pila;
+		p4_nelementos->Text = "Cartas: " + pila_4->Elementos_en_la_pila;
+		p5_nelementos->Text = "Cartas: " + pila_5->Elementos_en_la_pila;
+		p6_nelementos->Text = "Cartas: " + pila_6->Elementos_en_la_pila;
+		p7_nelementos->Text = "Cartas:  " + pila_7->Elementos_en_la_pila;
 	}
 	catch (...)
 	{
 		System::Windows::Forms::MessageBox::Show("Error. Ingresa un destino.");
 	}
-	C = baraja->Desapilar();
-	C.mostrar = true;
-	switch (destino)
-	{
-	case 1:
-		pila_1->Apilar(C);
-		break;
-	case 2:
-		pila_2->Apilar(C);
-		break;
-	case 3:
-		pila_3->Apilar(C);
-		break;
-	case 4:
-		pila_4->Apilar(C);
-		break;
-	case 5:
-		pila_5->Apilar(C);
-		break;
-	case 6:
-		pila_6->Apilar(C);
-		break;
-	case 7:
-		pila_7->Apilar(C);
-		break;
-	}
-	txt_pila1->Text = pila_1->ObtenerPila(pila_1);
-	txt_pila2->Text = pila_2->ObtenerPila(pila_2);
-	txt_pila3->Text = pila_3->ObtenerPila(pila_3);
-	txt_pila4->Text = pila_4->ObtenerPila(pila_4);
-	txt_pila5->Text = pila_5->ObtenerPila(pila_5);
-	txt_pila6->Text = pila_6->ObtenerPila(pila_6);
-	txt_pila7->Text = pila_7->ObtenerPila(pila_7);
-	if (baraja->Elementos_en_la_pila == 0)
-	{
-		System::Windows::Forms::MessageBox::Show("Se han acabado las cartas en la baraja.");
-		button3->Enabled = false;
-		label2->Visible = false;
-		txt_cima_baraja->Visible = false;
-	}
-	txt_restantes_baraja->Text = "Quedan " + baraja->Elementos_en_la_pila + " cartas en la baraja.";
-	Carta Cima_Baraja = baraja->ObtenerCima();
-	String^ color;
-	if (Cima_Baraja.color_carta == 1)
-	{
-		color = "Rojo";
-	}
-	else
-	{
-		color = "Negro";
-	}
-	txt_cima_baraja->Text = Cima_Baraja.numero_carta + " " + color;
-	p1_nelementos->Text = "Cartas: " + pila_1->Elementos_en_la_pila;
-	p2_nelementos->Text = "Cartas: " + pila_2->Elementos_en_la_pila;
-	p3_nelementos->Text = "Cartas: " + pila_3->Elementos_en_la_pila;
-	p4_nelementos->Text = "Cartas: " + pila_4->Elementos_en_la_pila;
-	p5_nelementos->Text = "Cartas: " + pila_5->Elementos_en_la_pila;
-	p6_nelementos->Text = "Cartas: " + pila_6->Elementos_en_la_pila;
-	p7_nelementos->Text = "Cartas:  " + pila_7->Elementos_en_la_pila;
-
-
-
 
 }
 };
